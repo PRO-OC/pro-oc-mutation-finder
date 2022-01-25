@@ -22,7 +22,7 @@ if (ViaReportButton) {
 
                                     var firstSheetName = workbook.SheetNames[0];
                                     var worksheet = workbook.Sheets[firstSheetName];
-                                    var startIndex = 2;
+                                    var startIndex = 180;
 
                                     tryToFindProfile(startIndex, worksheet); 
                                 });
@@ -485,7 +485,7 @@ function loadOckoUzisPatientInfo(zadanka, callback) {
                     }
 
                     results.Pacient_DiscriminacniPCRMutace.push({
-                        'Datum': headersWithMutationsNodes.snapshotItem(i).parentNode.parentNode.parentNode.parentNode.parentNode.previousSibling.childNodes[2].innerText,
+                        'Datum': getDateFormatDDdotMMdotYYYY(headersWithMutationsNodes.snapshotItem(i).parentNode.parentNode.parentNode.parentNode.parentNode.previousSibling.childNodes[2].innerText),
                         'Mutace': mutations,
                     });
                 }
@@ -500,6 +500,14 @@ function loadOckoUzisPatientInfo(zadanka, callback) {
     xhr.send(urlParams.toString());
 }
 
+function getDateFormatDDdotMMdotYYYY(date) {
+    var day = date.substr(0, date.indexOf('.'));
+    var month = date.substr(date.indexOf('.') + 1, date.lastIndexOf('.') - date.indexOf('.') - 1) - 1;
+    var year = date.substr(date.lastIndexOf('.') + 1, date.lastIndexOf(' ')- date.lastIndexOf('.'));
+    var dateObj = new Date(year, month, day);
+
+    return dateObj.getDate() + "." + (dateObj.getMonth() + 1) + "." + dateObj.getFullYear();
+  }
 
 async function getZadankaData(cisloZadanky) {
 

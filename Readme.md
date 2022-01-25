@@ -28,7 +28,7 @@ Vypsat všechny pozitivní mutace zjištěné diskriminačními PCR testy.
 
 ![Preview](preview/tlacitko_spusteni.png)
 
-4. Zobrazené logy v consoli lze zpřehlednit např. takto `cat ulozit-jako-z-console-f12.log | grep '^popup.js:*' | sort -k8 -n > output.log`
+4. Zobrazené logy v consoli lze zpřehlednit např. takto `cat greg-before.log | grep '^popup.js:*' | sort -n -k5 -k4 -k3 > grep-after.log`
 
 ## Logování
 
@@ -36,22 +36,16 @@ Vypsat všechny pozitivní mutace zjištěné diskriminačními PCR testy.
 
 ```
 ...
-782
-popup.js:72 Mutace 16. 1. 2022 21:15:00 1698586963 Del69-70
-popup.js:72 Mutace 16. 1. 2022 21:15:00 1698586963 E484K
-popup.js:72 Mutace 16. 1. 2022 21:15:00 1698586963 K417N
-popup.js:77 784
-popup.js:72 Mutace 16. 1. 2022 21:14:00 2309808822 Del69-70
-popup.js:72 Mutace 16. 1. 2022 21:14:00 2309808822 E484K
-popup.js:72 Mutace 16. 1. 2022 21:14:00 2309808822 K417N
-popup.js:77 786
-popup.js:77 787
-popup.js:77 788
-popup.js:77 789
-popup.js:77 790
-popup.js:72 Mutace 16. 1. 2022 21:06:00 7781498573 Del69-70
-popup.js:72 Mutace 16. 1. 2022 21:06:00 7781498573 E484K
-popup.js:72 Mutace 16. 1. 2022 21:06:00 7781498573 K417N
-popup.js:77 792
+popup.js:72 Mutace 15. 08. 2021 20:06:00 3032525969 L452R
+popup.js:72 Mutace 15. 08. 2021 20:06:00 3032525969 P681R
+popup.js:72 Mutace 02. 01. 2022 16:26:00 2990218714 Del69-70
+popup.js:72 Mutace 02. 01. 2022 16:26:00 2990218714 K417N
+popup.js:72 Mutace 05. 01. 2022 12:37:00 3030669682 Del69-70
+popup.js:72 Mutace 05. 01. 2022 12:37:00 3030669682 E484K
+popup.js:72 Mutace 06. 01. 2022 14:53:00 3737366921 Del69-70
+popup.js:72 Mutace 06. 01. 2022 14:53:00 3737366921 E484K
+popup.js:72 Mutace 06. 01. 2022 14:54:00 6003207841 Del69-70
+popup.js:72 Mutace 06. 01. 2022 14:54:00 6003207841 E484K
+popup.js:72 Mutace 11. 01. 2022 14:59:00 7337063288 Del69-70
 ...
 ```
