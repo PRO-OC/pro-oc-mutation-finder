@@ -1,0 +1,26 @@
+{
+  "name": "pro-oc-mutation-finder",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Lukáš Drahník <ldrahnik@gmail.com>",
+  "main": "index.js",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pro-oc/pro-oc-mutation-finder.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pro-oc/pro-oc-mutation-finder/issues"
+  },
+  "homepage": "https://github.com/pro-oc/pro-oc-mutation-finder#readme",
+  "engines": {
+    "node": "14.x"
+  }
+}
