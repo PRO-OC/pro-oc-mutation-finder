@@ -28,7 +28,7 @@ Vypsat všechny pozitivní mutace zjištěné diskriminačními PCR testy.
 
 ![Preview](preview/tlacitko_spusteni.png)
 
-4. Zobrazené logy v consoli lze zpřehlednit např. takto `cat greg-before.log | grep '^popup.js:*' | sort -n -k5 -k4 -k3 > grep-after.log`
+4. Zobrazené logy v consoli lze zpřehlednit např. takto `cat greg-before.log | uniq | grep '^popup.js:*' | cut -b 20- | sort -n -k5 -k4 -k3 > grep-after.log`
 
 ## Logování
 
