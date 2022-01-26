@@ -49,3 +49,11 @@ popup.js:72 Mutace 06. 01. 2022 14:54:00 6003207841 E484K
 popup.js:72 Mutace 11. 01. 2022 14:59:00 7337063288 Del69-70
 ...
 ```
+
+## Problémy
+
+- Stává se relativně často, že zadané mutace u konkrétního konfirmačního RT-PCR testu jsou duplikované
+
+![Preview](preview/duplikovane_uvedene_mutace.png)
+
+
