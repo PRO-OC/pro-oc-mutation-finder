@@ -12,7 +12,7 @@ Osobní informace pacientů podmíněné přihlášením do modulu [Pacienti COV
 
 ## Účel
 
-Vypsat všechny pozitivní mutace zjištěné diskriminačními PCR testy.
+Vypsat všechny mutace zjištěné (pozitivní i negativní) diskriminačními PCR testy.
 
 ## Použití
 

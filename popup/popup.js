@@ -22,7 +22,7 @@ if (ViaReportButton) {
 
                                     var firstSheetName = workbook.SheetNames[0];
                                     var worksheet = workbook.Sheets[firstSheetName];
-                                    var startIndex = 180;
+                                    var startIndex = 2;
 
                                     tryToFindProfile(startIndex, worksheet); 
                                 });
@@ -87,7 +87,7 @@ async function tryToFindProfileByCisloZadanky(index, CisloZadanky) {
                     Profily.forEach(function(Profile) {
                         Profile.Pacient_DiscriminacniPCRMutace.forEach(function(DiscriminacniPCR) {
                             DiscriminacniPCR.Mutace.forEach(Mutace => {
-                                console.log("Mutace", DiscriminacniPCR.Datum, CisloZadanky, Mutace.Kod);
+                                console.log("Mutace", DiscriminacniPCR.Datum, CisloZadanky, Mutace.Kod, Mutace.Vysledek);
                             });
                         });
                     });
@@ -474,13 +474,11 @@ function loadOckoUzisPatientInfo(zadanka, callback) {
                     var mutations = [];
 
                     while(mutationRow) {
-                        
-                        if(mutationRow.childNodes[1].innerText == "Pozitivní") {
-                            mutations.push({ 
-                                'Kod': mutationRow.childNodes[0].innerText,
-                                'Vysledek': mutationRow.childNodes[1].innerText 
-                            });
-                        }
+
+                        mutations.push({
+                            'Kod': mutationRow.childNodes[0].innerText,
+                            'Vysledek': mutationRow.childNodes[1].innerText 
+                        });
                         mutationRow = mutationRow.nextSibling;
                     }
 
