@@ -77,6 +77,11 @@ async function tryToFindProfile(index, worksheet) {
     }
 }
 
+function getPotvrzujiciLaboratorIdentifier(ZadankaDataPotvrzeniLaborator) {
+    const delimeter = "&";
+    return ZadankaDataPotvrzeniLaborator.KodMista + delimeter + ZadankaDataPotvrzeniLaborator.NazevMista + delimeter + ZadankaDataPotvrzeniLaborator.ICO;
+}
+
 async function tryToFindProfileByCisloZadanky(index, CisloZadanky) {
     return new Promise(function (resolve, reject) {
         getZadankaData(CisloZadanky).then(function(ZadankaData) {
@@ -87,7 +92,24 @@ async function tryToFindProfileByCisloZadanky(index, CisloZadanky) {
                     Profily.forEach(function(Profile) {
                         Profile.Pacient_DiscriminacniPCRMutace.forEach(function(DiscriminacniPCR) {
                             DiscriminacniPCR.Mutace.forEach(Mutace => {
-                                console.log("Mutace", DiscriminacniPCR.Datum, CisloZadanky, Mutace.Kod, Mutace.Vysledek);
+
+                                var Laboratore = [];
+                                for(let i = 0; i < ZadankaData.PotvrzeniLaborator.length; i++ ) {
+                                    if(!Laboratore.includes(getPotvrzujiciLaboratorIdentifier(ZadankaData.PotvrzeniLaborator[i]))) {
+                                        Laboratore.push(getPotvrzujiciLaboratorIdentifier(ZadankaData.PotvrzeniLaborator[i]));
+                                    }
+                                }
+
+                                console.log(
+                                    "Mutace", 
+                                    getDateFormatDDdotMMdotYYYY(DiscriminacniPCR.Datum),
+                                    CisloZadanky,
+                                    getDateFormatDDdotMMdotYYYY(Profile.PacientDatumNarozeniText),
+                                    isSexWomanByCisloPojistence(ZadankaData) ? "žena" : "muž",
+                                    Mutace.Kod,
+                                    Mutace.Vysledek,
+                                    Laboratore.join(",")
+                                );
                             });
                         });
                     });
@@ -99,6 +121,16 @@ async function tryToFindProfileByCisloZadanky(index, CisloZadanky) {
         });
     });
 }
+
+function isSexWomanByCisloPojistence(ZadankaData) {
+    var day = ZadankaData.TestovanyCisloPojistence.substr(2, 2);
+    if(day >= 50) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 function isEregKsrzisSignedIn(callback) {
     var url = getEregRegistrUrl();
@@ -499,13 +531,25 @@ function loadOckoUzisPatientInfo(zadanka, callback) {
 }
 
 function getDateFormatDDdotMMdotYYYY(date) {
+    var date = date.trim();
+
     var day = date.substr(0, date.indexOf('.'));
     var month = date.substr(date.indexOf('.') + 1, date.lastIndexOf('.') - date.indexOf('.') - 1) - 1;
-    var year = date.substr(date.lastIndexOf('.') + 1, date.lastIndexOf(' ')- date.lastIndexOf('.'));
+
+    var year = undefined;
+    if(date.length > 12) {
+        year = date.substr(date.lastIndexOf(' ') - 4, 4);
+    } else {
+        year = date.substr(date.length - 4, 4);
+    }
+
     var dateObj = new Date(year, month, day);
 
-    return dateObj.getDate() + "." + (dateObj.getMonth() + 1) + "." + dateObj.getFullYear();
-  }
+    var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    var result = (dateObj.toLocaleDateString("en-GB", options)).replaceAll("/", ".");
+
+    return result;
+}
 
 async function getZadankaData(cisloZadanky) {
 

@@ -28,7 +28,7 @@ Vypsat všechny mutace zjištěné (pozitivní i negativní) diskriminačními P
 
 ![Preview](preview/tlacitko_spusteni.png)
 
-4. Zobrazené logy v consoli lze zpřehlednit např. takto `cat greg-before.log | uniq | grep '^popup.js:*' | cut -b 20- | sort -n -k5 -k4 -k3 | awk NF > grep-after.log`
+4. Zobrazené logy v consoli lze zpřehlednit viz např. zpracování v [PRO OC Mutation finder VFN reports](https://github.com/PRO-OC/pro-oc-mutation-finder-vfn-reports)
 
 ## Logování
 
@@ -36,17 +36,12 @@ Vypsat všechny mutace zjištěné (pozitivní i negativní) diskriminačními P
 
 ```
 ...
-popup.js:72 Mutace 15. 08. 2021 20:06:00 3032525969 L452R
-popup.js:72 Mutace 15. 08. 2021 20:06:00 3032525969 P681R
-popup.js:72 Mutace 02. 01. 2022 16:26:00 2990218714 Del69-70
-popup.js:72 Mutace 02. 01. 2022 16:26:00 2990218714 K417N
-popup.js:72 Mutace 05. 01. 2022 12:37:00 3030669682 Del69-70
-popup.js:72 Mutace 05. 01. 2022 12:37:00 3030669682 E484K
-popup.js:72 Mutace 06. 01. 2022 14:53:00 3737366921 Del69-70
-popup.js:72 Mutace 06. 01. 2022 14:53:00 3737366921 E484K
-popup.js:72 Mutace 06. 01. 2022 14:54:00 6003207841 Del69-70
-popup.js:72 Mutace 06. 01. 2022 14:54:00 6003207841 E484K
-popup.js:72 Mutace 11. 01. 2022 14:59:00 7337063288 Del69-70
+ 19.07.2021 6907778154 23.12.1992 žena E484K Negativní PHA-325&Všeobecná fakultní nemocnice v Praze&64165
+ 15.08.2021 3032525969 10.10.1991 žena L452R Pozitivní PHA-433&Všeobecná fakultní nemocnice v Praze, ULBLD, Sérologická laboratoř&64165
+ 15.08.2021 3032525969 10.10.1991 žena P681R Pozitivní PHA-433&Všeobecná fakultní nemocnice v Praze, ULBLD, Sérologická laboratoř&64165
+ 02.01.2022 2990218714 05.06.2001 žena Del69-70 Pozitivní PHA-325&Všeobecná fakultní nemocnice v Praze&64165
+ 02.01.2022 2990218714 05.06.2001 žena K417N Pozitivní PHA-325&Všeobecná fakultní nemocnice v Praze&64165
+ 05.01.2022 3030669682 01.12.1990 žena Del69-70 Pozitivní PHA-325&Všeobecná fakultní nemocnice v Praze&64165
 ...
 ```
 
