@@ -16,10 +16,10 @@ Vypsat všechny mutace zjištěné (pozitivní i negativní) diskriminačními P
 
 ## Použití
 
-1. Přesunout soubor se žádankami do složky **Assets/Žádanky.xlsx** ve formátu:
+
+1. Vyexportovat žádanky na stránce [Moje žádanky](https://ereg.ksrzis.cz/Registr/CUDZadanky/MojeZadanky) s výsledkem pozitivní do souboru a soubor přesunout do složky **Assets/Žádanky.xlsx** (je ve formátu):
 - **1. řádek** obsahující sloupce v tomto pořadí: Datum, Číslo žádanky, Jméno, Příjmení, Číslo pojištěnce, Číslo pacienta, Stav žádanky, Pojišťovna (řádek je nepovinný, může zůstat prázdný, data se ale vždy začínají načítat až od 2. řádku)
 - **2. až n. řádek** konkrétních dat (nepovinné sloupce jsou Datum, Stav žádanky a Pojišťovna) 
-- žádanky za předchozí den je pro přihlášené zdravotnické zařízení možné v tomto formátu vyexportovat na stránce [Moje žádanky](https://ereg.ksrzis.cz/Registr/CUDZadanky/MojeZadanky)
 
 ![Preview](preview/export.png)
 
