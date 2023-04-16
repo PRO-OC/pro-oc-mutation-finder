@@ -30,7 +30,11 @@ a soubor přesunout do složky **Assets/Žádanky.xlsx** (je ve formátu):
 
 ![Preview](preview/tlacitko_spusteni.png)
 
-4. Zobrazené logy v consoli lze zpřehlednit viz např. zpracování v [PRO OC Mutation finder VFN reports](https://github.com/PRO-OC/pro-oc-mutation-finder-vfn-reports)
+4. Zobrazené logy uložené z console lze zpřehlednit např. takto:
+
+```
+cat <report_file.log> | grep '^popup.js:*' | cut -b 21- | sort -n -t"." -k3 -k2 -k1 | uniq | awk NF
+```
 
 ## Logování
 
