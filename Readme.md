@@ -34,10 +34,11 @@ a soubor přesunout do složky **Assets/Žádanky.xlsx** (je ve formátu):
 
 ```
 # jednotlivé sloupce oddělené mezerami
-cat <report_file.log> | grep '^popup.js:*' | cut -b 21- | sort -n -t"." -k3 -k2 -k1 | uniq | awk NF
+cat report_file.log | grep '^popup.js:*' | cut -b 21- | sort -n -t"." -k3 -k2 -k1 | uniq | awk NF > report_file_formatted.log
 
-# převedení na .csv s oddělovačem středníkem
-cat <report_file.log> | sed '-es/ /;/'{5..1}
+# převedení na .csv s oddělovačem středníkem a hlavičkou
+cat report_file_formatted.log | sed '-es/ /;/'{6..1} > report_file.csv
+echo -e "Datum;Cislo_zadanky;Datum_narozeni;Pohlavi;Nazev_mutace;Vysledek_mutace;Laborator1;Laborator2;Laborator3" | cat - report_file.csv > report_file.csv
 ```
 
 ## Logování
