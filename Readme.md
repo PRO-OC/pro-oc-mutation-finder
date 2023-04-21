@@ -33,7 +33,11 @@ a soubor přesunout do složky **Assets/Žádanky.xlsx** (je ve formátu):
 4. Zobrazené logy uložené z console lze zpřehlednit např. takto:
 
 ```
+# jednotlivé sloupce oddělené mezerami
 cat <report_file.log> | grep '^popup.js:*' | cut -b 21- | sort -n -t"." -k3 -k2 -k1 | uniq | awk NF
+
+# převedení na .csv s oddělovačem středníkem
+cat <report_file.log> | sed '-es/ /;/'{5..1}
 ```
 
 ## Logování
